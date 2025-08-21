@@ -66,9 +66,8 @@ const Navigation = () => {
             </span>
           </button>
 
-          {/* CTA */}
           <Link href="/menu">
-            <button className="hidden sm:flex px-3 py-1.5 bg-primary text-white rounded-sm hover:bg-orange-600 transition-colors">
+            <button className="hidden sm:flex px-3 py-1.5 bg-primary text-white rounded-lg hover:bg-orange-600 transition-colors">
               Order Now
             </button>
           </Link>

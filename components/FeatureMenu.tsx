@@ -107,7 +107,7 @@ const dishes = [
 const MenuSection = () => {
   return (
     <section className="py-20 bg-gray-50">
-      <div className="mx-auto px-4 lg:container">
+      <div className="mx-auto px-4 max-w-screen-xl">
         {/* Header */}
         <div className="text-center px-4 pb-16">
           <h2 className="text-5xl font-extrabold tracking-tight">
@@ -135,7 +135,7 @@ const MenuSection = () => {
                   <Image
                     src={dish?.image}
                     alt={dish.name}
-                    className="object-cover w-full h-full"
+                    className="object-cover bg-no-repeat w-full h-full"
                   />
                 </div>
                 {/* Badges */}

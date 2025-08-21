@@ -45,7 +45,7 @@ const HeroSection = () => {
                 type="button"
                 className="bg-gradient-to-r from-orange-500 to-orange-400 
              px-7 py-3 flex items-center text-white rounded-md 
-             hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+             hover:shadow-lg hover:scale-105 transition-all duration-300 group font-medium"
               >
                 Start Ordering
                 <ArrowRightIcon
@@ -55,7 +55,7 @@ const HeroSection = () => {
               </button>
             </Link>
             <Link href="/menu">
-              <button className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-7 py-3 flex items-center rounded-md transition-colors">
+              <button className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-7 py-3 flex items-center rounded-md transition-colors font-medium">
                 View Menu
               </button>
             </Link>

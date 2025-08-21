@@ -131,25 +131,25 @@ export default function FeatureSection() {
       {/* stats */}
       <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
-          <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-primary mb-2">
+          <div className="text-4xl font-bold bg-gradient-primary text-primary mb-2">
             100K+
           </div>
           <p className="text-mutedColor">Happy Customers</p>
         </div>
         <div>
-          <div className="text-4xl font-bold bg-gradient-secondary bg-clip-text text-accent mb-2">
+          <div className="text-4xl font-bold bg-gradient-secondary  text-secondary mb-2">
             50+
           </div>
           <p className="text-mutedColor">Cloud Kitchens</p>
         </div>
         <div>
-          <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-primary mb-2">
+          <div className="text-4xl font-bold bg-gradient-primary text-accent mb-2">
             500+
           </div>
           <p className="text-mutedColor">Menu Items</p>
         </div>
         <div>
-          <div className="text-4xl font-bold bg-gradient-secondary bg-clip-text text-accent mb-2">
+          <div className="text-4xl font-bold bg-gradient-secondary text-info mb-2">
             15min
           </div>
           <p className="text-mutedColor">Avg Delivery</p>
