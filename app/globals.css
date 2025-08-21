@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Quicksand", sans-serif;
   font-style: normal;
