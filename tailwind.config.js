@@ -15,8 +15,6 @@ module.exports = {
         secondary: "#a855f7",
         accent: "#22c55e",
         mutedColor: "#64748b",
-
-        // extra brand palette
         info: "#0ea5e9",
         warning: "#facc15",
         danger: "#ef4444",

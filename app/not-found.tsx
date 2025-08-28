@@ -9,7 +9,7 @@ export default function NotFound() {
           <h1 className="mb-4 text-7xl font-extrabold text-primary">404</h1>
 
           {/* Main message */}
-          <p className="mb-4 text-3xl t font-bold text-gray-800 md:text-4xl">
+          <p className="mb-4 text-3xl t font-bold text-dark md:text-4xl">
             Something's missing.
           </p>
 

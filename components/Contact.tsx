@@ -72,7 +72,7 @@ export default function Contact() {
             </div>
             <h3 className="font-semibold mb-3">{info.title}</h3>
             {info.details.map((detail, idx) => (
-              <p key={idx} className="text-gray-500 text-sm mb-1">
+              <p key={idx} className="text-dark text-sm mb-1">
                 {detail}
               </p>
             ))}

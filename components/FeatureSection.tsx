@@ -75,7 +75,7 @@ export default function FeatureSection() {
         </h2>
 
         <div className="mt-6 text-lg text-mutedColor leading-relaxed font-medium">
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-mutedColor max-w-2xl mx-auto mb-8">
             Experience the perfect blend of technology, quality, and speed that
             food delivery effortless and enjoyable.
           </p>

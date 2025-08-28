@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import dishImage from "@/public/taco.jpg";
 import pizza from "@/public/pizza.jpg";
+import { MenuFilter } from "./MenuFilter";
 
 // Badge component
 const Badge = ({
@@ -120,6 +121,8 @@ export default function MenuPage() {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="w-full bg-[linear-gradient(180deg,hsl(0_0%_100%)_0%,hsl(43_96%_98%)_100%)]">
       {/* Header + search + categories */}
@@ -176,14 +179,15 @@ export default function MenuPage() {
         <div className="max-w-screen-xl mx-auto px-4 mb-8">
           <div className="flex items-center justify-between mb-6">
             <p className="text-mutedColor text-base font-medium">
-              Showing 10 dishes
-              <span className="ml-2 text-gray-500">| 10 filter applied</span>
+              <span className="ml-2 text-gray-500">0 filter applied</span>
             </p>
 
             {/* Filters Button */}
+
             <button
+              onClick={() => setOpen(true)}
               className="font-medium text-black flex justify-center 
-            items-center px-3 py-2 rounded-md border text-sm"
+            items-center px-3 py-2 rounded-md border text-sm relative"
             >
               <Filter size={15} className="mr-2" />
               Filters
@@ -268,6 +272,8 @@ export default function MenuPage() {
           ))}
         </div>
       </section>
+      {/*  menu filter button  */}
+      <MenuFilter isModalOpen={open} onClose={() => setOpen(false)} />
     </section>
   );
 }

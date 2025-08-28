@@ -116,7 +116,7 @@ const MenuSection = () => {
           </h2>
 
           <div className="mt-6 text-lg text-mutedColor leading-relaxed font-medium">
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-mutedColor max-w-2xl mx-auto mb-8">
               Discover carefully crafted dishes from our premium cloud kitchens,
               made with the freshest ingredients and bold flavors.
             </p>
@@ -160,7 +160,7 @@ const MenuSection = () => {
 
                 {/* Cook Time */}
                 <div className="absolute top-4 right-4">
-                  <div className="flex items-center gap-1 bg-white/90 rounded-full px-2 py-1 text-sm font-medium text-gray-600">
+                  <div className="flex items-center gap-1 bg-white/90 rounded-full px-2 py-1 text-sm font-medium text-dark">
                     <Clock className="h-3 w-3" />
                     {dish.cookTime}
                   </div>
@@ -178,7 +178,7 @@ const MenuSection = () => {
                   </span>
                 </div>
 
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-1">
+                <p className="text-dark mb-4 text-sm leading-relaxed line-clamp-1">
                   {dish.description}
                 </p>
 

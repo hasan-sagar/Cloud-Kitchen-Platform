@@ -96,7 +96,7 @@ const Navigation = () => {
               className={`block transition-colors font-medium text-lg ${
                 pathname === item.href
                   ? "text-primary"
-                  : "text-gray-700 hover:text-primary"
+                  : "text-dark hover:text-primary"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
