@@ -1,11 +1,61 @@
+"use client";
 import { ArrowUpDown, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
-interface props {
+interface Props {
   isModalOpen: boolean;
   onClose?: () => void;
 }
 
-export function MenuFilter({ isModalOpen, onClose }: props) {
+type Filters = {
+  sortBy: string;
+  price: number;
+  dietary: string[];
+};
+
+export function MenuFilter({ isModalOpen, onClose }: Props) {
+  const [filters, setFilters] = useState<Filters>({
+    sortBy: "Most Popular",
+    price: 0,
+    dietary: [],
+  });
+
+  // Available filter options
+  const filterOptions = {
+    sortBy: [
+      "Most Popular",
+      "Price: Low to High",
+      "Price: High to Low",
+      "Highest Rated",
+    ],
+    dietary: ["Vegetarian Only", "Spice Only", "Vegan", "Gluten Free"],
+  };
+
+  // Debug log
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
+
+  const handleSortChange = (value: string) => {
+    setFilters((prev) => ({ ...prev, sortBy: value }));
+  };
+
+  const handlePriceChange = (value: number) => {
+    setFilters((prev) => ({ ...prev, price: value }));
+  };
+
+  const handleDietaryChange = (value: string) => {
+    setFilters((prev) => {
+      const alreadySelected = prev.dietary.includes(value);
+      return {
+        ...prev,
+        dietary: alreadySelected
+          ? prev.dietary.filter((item) => item !== value)
+          : [...prev.dietary, value],
+      };
+    });
+  };
+
   return (
     <>
       <aside
@@ -14,12 +64,8 @@ export function MenuFilter({ isModalOpen, onClose }: props) {
         }`}
       >
         <div className="p-8 relative h-full flex flex-col">
-          {/* Header */}
-          {/* <h2 className="text-lg font-semibold text-gray-800 mb-4">Filters</h2> */}
-
-          {/* Close Button */}
           <button
-            className="absolute top-7 right-4 text-gray-400 hover:text-gray-800 transition-colors"
+            className="absolute top-7 right-4 text-mutedColor hover:text-dark transition-colors"
             onClick={onClose}
           >
             <X />
@@ -34,21 +80,18 @@ export function MenuFilter({ isModalOpen, onClose }: props) {
                 Sort By
               </h3>
               <div className="space-y-2">
-                {[
-                  "Most Popular",
-                  "Price: Low to High",
-                  "Price: High to Low",
-                  "Highest Rated",
-                ].map((option) => (
+                {filterOptions.sortBy.map((option) => (
                   <label
                     key={option}
-                    className="flex items-center text-gray-700 cursor-pointer"
+                    className="flex items-center text-mutedColor font-medium cursor-pointer"
                   >
                     <input
                       type="radio"
                       name="sort-by"
                       value={option}
-                      className="form-radio text-orange-500 rounded-full focus:ring-orange-500"
+                      checked={filters.sortBy === option}
+                      onChange={() => handleSortChange(option)}
+                      className="text-primary rounded-full focus:ring-orange-500"
                     />
                     <span className="ml-2">{option}</span>
                   </label>
@@ -58,38 +101,49 @@ export function MenuFilter({ isModalOpen, onClose }: props) {
 
             {/* Price Range Section */}
             <div className="mb-6 pb-4 border-b border-gray-200">
-              <h3 className="font-medium text-gray-600 mb-2">Price Range</h3>
-              <div className="flex justify-between text-sm text-gray-500 mb-2">
+              <h3 className="font-medium text-dark mb-2">Price Range</h3>
+              <div className="flex justify-between text-base text-dark mb-2 font-medium">
                 <span>$0</span>
-                <span>${10}</span>
+                <span>${filters.price}</span>
               </div>
               <input
                 type="range"
                 min="0"
                 max="50"
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg [&::-webkit-slider-thumb]:bg-orange-500 [&::-moz-range-thumb]:bg-orange-500"
+                value={filters.price}
+                onChange={(e) => handlePriceChange(Number(e.target.value))}
+                className="h-2 w-full bg-gray-200 cursor-pointer rounded-md active:bg-primary"
               />
             </div>
 
             {/* Dietary Section */}
             <div className="mb-6">
-              <h3 className="font-medium text-gray-600 mb-2">Dietary</h3>
+              <h3 className="font-medium text-dark mb-2">Dietary</h3>
               <div className="space-y-2">
-                <label className="flex items-center text-gray-700 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="vegetarian"
-                    className="form-checkbox text-orange-500 rounded focus:ring-orange-500"
-                  />
-                  <span className="ml-2">Vegetarian Only</span>
-                </label>
+                {filterOptions.dietary.map((option) => (
+                  <label
+                    key={option}
+                    className="flex items-center text-mutedColor font-medium cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={filters.dietary.includes(option)}
+                      onChange={() => handleDietaryChange(option)}
+                      className="text-primary rounded focus:ring-orange-500"
+                    />
+                    <span className="ml-2">{option}</span>
+                  </label>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Apply Filters Button */}
           <button
-            onClick={onClose}
+            onClick={() => {
+              console.log("Applied Filters:", filters);
+              onClose?.();
+            }}
             className="mt-auto p-3 w-full bg-orange-500 text-white hover:bg-orange-600 rounded-md transition-colors font-semibold"
           >
             Apply Filters
