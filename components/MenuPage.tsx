@@ -6,6 +6,7 @@ import Image from "next/image";
 import dishImage from "@/public/taco.jpg";
 import pizza from "@/public/pizza.jpg";
 import { MenuFilter } from "./MenuFilter";
+import Link from "next/link";
 
 // Badge component
 const Badge = ({
@@ -196,79 +197,81 @@ export default function MenuPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {dishes.map((dish) => (
-            <div
-              key={dish.id}
-              className="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-            >
-              <div className="relative h-56">
-                <Image
-                  src={dish.image}
-                  alt={dish.name}
-                  className="object-cover w-full h-full"
-                />
+            <Link href={`/product/${dish.id}`} key={dish.id}>
+              <div
+                key={dish.id}
+                className="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
+                <div className="relative h-56">
+                  <Image
+                    src={dish.image}
+                    alt={dish.name}
+                    className="object-cover w-full h-full"
+                  />
 
-                {/* Badges */}
-                <div className="absolute top-4 left-4 flex gap-2">
-                  {dish.isSpicy && (
-                    <Badge
-                      icon={Flame}
-                      text="Spicy"
-                      color="bg-red-50 text-red-600"
-                    />
-                  )}
-                  {dish.isVegetarian && (
-                    <Badge
-                      icon={Vegan}
-                      text="Vegetarian"
-                      color="bg-green-50 text-green-600"
-                    />
-                  )}
-                </div>
+                  {/* Badges */}
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    {dish.isSpicy && (
+                      <Badge
+                        icon={Flame}
+                        text="Spicy"
+                        color="bg-red-50 text-red-600"
+                      />
+                    )}
+                    {dish.isVegetarian && (
+                      <Badge
+                        icon={Vegan}
+                        text="Vegetarian"
+                        color="bg-green-50 text-green-600"
+                      />
+                    )}
+                  </div>
 
-                {/* Cook time */}
-                <div className="absolute top-4 right-4">
-                  <div className="flex items-center gap-1 bg-white/90 rounded-full px-2 py-1 text-sm font-medium text-gray-600">
-                    <Clock className="h-3 w-3" />
-                    {dish.cookTime}
+                  {/* Cook time */}
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1 bg-white/90 rounded-full px-2 py-1 text-sm font-medium text-gray-600">
+                      <Clock className="h-3 w-3" />
+                      {dish.cookTime}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Card content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-lg font-semibold group-hover:text-orange-500 transition-colors">
-                    {dish.name}
-                  </h3>
-                  <span className="text-lg font-bold text-orange-500">
-                    ${dish.price}
-                  </span>
-                </div>
-
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-1">
-                  {dish.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                      <span className="text-sm text-black font-semibold">
-                        {dish.rating}
-                      </span>
-                    </div>
-                    <span className="text-xs text-gray-500 font-medium">
-                      ({dish.reviews})
+                {/* Card content */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="text-lg font-semibold group-hover:text-orange-500 transition-colors">
+                      {dish.name}
+                    </h3>
+                    <span className="text-lg font-bold text-orange-500">
+                      ${dish.price}
                     </span>
                   </div>
 
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-sm bg-orange-500 text-white hover:bg-orange-600 transition">
-                    <Plus className="h-4 w-4" />
-                    Order Now
-                  </button>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-1">
+                    {dish.description}
+                  </p>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <span className="text-sm text-black font-semibold">
+                          {dish.rating}
+                        </span>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">
+                        ({dish.reviews})
+                      </span>
+                    </div>
+
+                    <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-sm bg-orange-500 text-white hover:bg-orange-600 transition">
+                      <Plus className="h-4 w-4" />
+                      Order Now
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

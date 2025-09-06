@@ -20,7 +20,7 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center space-x-2">
-            <StarIcon size={30} className="fill-yellow-400" />
+            <StarIcon size={20} className="fill-yellow-400 stroke-none" />
             <span className="text-white/90 font-medium">
               Rated #1 Cloud Kitchen Platform
             </span>
