@@ -1,14 +1,55 @@
 import {
+  CheckCircle,
+  ChefHat,
   Clock,
-  Locate,
   MapPin,
   MapPinHouse,
   MessageCircle,
+  Package,
   Phone,
   Search,
   Star,
+  Truck,
 } from "lucide-react";
-import React from "react";
+
+const trackingSteps = [
+  {
+    id: 1,
+    title: "Order Confirmed",
+    description: "Your order has been received and confirmed",
+    status: "completed",
+    icon: CheckCircle
+  },
+  {
+    id: 2,
+    title: "Preparing Food",
+    description: "Chef is preparing your delicious meal",
+    status: "completed",
+    icon: ChefHat
+  },
+  {
+    id: 3,
+    title: "Ready for Pickup",
+    description: "Food is ready and being packaged",
+    status: "completed",
+    icon: Package
+  },
+  {
+    id: 4,
+    title: "Out for Delivery",
+    description: "Driver is on the way to your location",
+    status: "active",
+    icon: Truck
+  },
+  {
+    id: 5,
+    title: "Delivered",
+    description: "Enjoy your meal!",
+    status: "pending",
+    icon: CheckCircle
+  }
+];
+
 
 export default function TrackOrder() {
   return (
@@ -48,18 +89,19 @@ export default function TrackOrder() {
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-2xl font-semibold text-gray-900 mb-2">
                 Order #CE-2024-001234
+                <p className="text-base font-medium text-gray-500">
+                  from Bella Vista Kitchen
+                </p>
               </h4>
               <button className="bg-yellow-500 px-3 py-1 rounded-full text-white text-xs font-semibold">
                 Out For Delivery
               </button>
             </div>
 
-            <p className="text-sm font-medium text-gray-500">
-              from Bella Vista Kitchen
-            </p>
+
 
             {/* order stats */}
-            <div className="flex justify-around gap-6 flex-wrap mt-5">
+            <div className="flex justify-around gap-6 flex-wrap mt-5 mb-10">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-1">
                   <Clock size={20} className="text-primary" />
@@ -93,6 +135,21 @@ export default function TrackOrder() {
                   Estimated Time
                 </p>
               </div>
+            </div>
+
+            {/* tracking timeline */}
+            <div className="space-y-4">
+              {trackingSteps.map((step) => (
+                <div key={step.id} className="flex items-start space-x-4">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-accent text-white">
+                    <step.icon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm">{step.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -140,6 +197,16 @@ export default function TrackOrder() {
                 <p>1x Truffle Pasta Carbonara</p>
                 <p>$24.99</p>
               </div>
+              <div className="flex justify-between items-center font-semibold text-black mt-5 text-sm">
+                <p>1x Truffle Pasta Carbonara</p>
+                <p>$24.99</p>
+              </div>
+              <hr className="mt-5" />
+              <div className="flex justify-between items-center mt-5 text-xl font-semibold text-primary">
+                <h4>Order Summary</h4>
+                <h4>$100.99</h4>
+              </div>
+
             </div>
 
             {/* Delivery Address Summary*/}
@@ -152,6 +219,21 @@ export default function TrackOrder() {
                 742 Oak Street, Apt 2B, Food City, FC 12345
               </div>
             </div>
+
+            {/* Support help */}
+            <div className="border rounded-md shadow-sm p-4 text-center bg-[linear-gradient(180deg,hsl(0_0%_100%)_0%,hsl(43_96%_98%)_100%)]">
+              <p className="text-base font-semibold text-black">Need Help?</p>
+              <p className="mt-3 text-sm font-medium text-mutedColor">
+                Contact our 24/7 customer support
+              </p>
+              <button
+                type="button"
+                className="mt-3 rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-light transition-colors bg-white"
+              >
+                Get Support
+              </button>
+            </div>
+
           </aside>
         </div>
       </div>
